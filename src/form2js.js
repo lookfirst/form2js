@@ -255,8 +255,6 @@ var form2js = (function()
             fieldValue = getFieldValue(node);   
 	        if (fieldValue == null && node.type == 'radio')
                 result = [];
-            else if (node.type == 'checkbox')
-            	result = [ { name: fieldName, value: node.checked} ];
             else
                 result = [ { name: fieldName, value: fieldValue} ];
         }
@@ -291,8 +289,8 @@ var form2js = (function()
 						if (fieldNode.checked) return fieldNode.value;
 						break;
 					case 'checkbox':
-                        if (fieldNode.checked && fieldNode.value === 'true' || fieldNode.value === 'on') return true;
-                        if (!fieldNode.checked && fieldNode.value === 'true' || fieldNode.value === 'on') return false;
+                        if (fieldNode.checked && (fieldNode.value === 'true' || fieldNode.value === 'on')) return true;
+                        if (!fieldNode.checked && (fieldNode.value === 'true' || fieldNode.value === 'on')) return false;
 						if (fieldNode.checked) return fieldNode.value;
 						break;
 
